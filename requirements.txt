@@ -4,4 +4,4 @@ torch
 openai
 python-dotenv
 pydantic
-openm-core[cli]
+openenv-core[cli]
