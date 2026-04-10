@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api/index.py" },
+    { "source": "/reset", "destination": "/api/index.py" },
+    { "source": "/step", "destination": "/api/index.py" },
+    { "source": "/state", "destination": "/api/index.py" },
+    { "source": "/tasks", "destination": "/api/index.py" },
+    { "source": "/guide", "destination": "/api/index.py" }
+  ]
+}
