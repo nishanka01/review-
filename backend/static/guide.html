@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OpenEnv | Simulation Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @media print {
+            .no-print { display: none; }
+            body { background: white !important; color: black !important; }
+            .glass { border: 1px solid #e2e8f0 !important; background: white !important; }
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 p-10">
+    <div class="max-w-4xl mx-auto bg-white p-12 shadow-xl border border-slate-200 rounded-2xl glass">
+        <div class="flex justify-between items-center mb-10 pb-6 border-b border-slate-100">
+            <div>
+                <h1 class="text-4xl font-black text-slate-900 tracking-tight">OpenEnv Simulation Guide</h1>
+                <p class="text-indigo-600 font-bold uppercase tracking-widest text-xs mt-2">CodeReview Reinforcement Learning</p>
+            </div>
+            <button onclick="window.print()" class="no-print bg-indigo-600 text-white px-6 py-2 rounded-full font-bold hover:bg-indigo-700 transition shadow-lg">SAVE AS PDF</button>
+        </div>
+
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                <span class="w-8 h-8 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mr-3 text-sm">01</span>
+                The Objective
+            </h2>
+            <p class="text-slate-600 leading-relaxed pl-11">
+                This environment acts as a "gym" for AI agents. The goal is to train an agent that can analyze source code, identify specific weaknesses (bugs, inefficiencies, or security flaws), and apply improvements to maximize its <strong>Reward Score</strong>.
+            </p>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                <span class="w-8 h-8 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mr-3 text-sm">02</span>
+                Simulation Tasks
+            </h2>
+            <div class="pl-11 space-y-4">
+                <div class="p-4 bg-slate-50 border border-slate-100 rounded-lg">
+                    <p class="font-bold text-slate-800">Easy: Naming Logic</p>
+                    <p class="text-sm text-slate-500 italic mb-2">Goal: Change cryptic variables (a, b) to descriptive ones (width, height).</p>
+                    <p class="text-xs text-indigo-600 font-mono">Grader: Regex-based name validation.</p>
+                </div>
+                <div class="p-4 bg-slate-50 border border-slate-100 rounded-lg">
+                    <p class="font-bold text-slate-800">Medium: Performance Optimization</p>
+                    <p class="text-sm text-slate-500 italic mb-2">Goal: Convert list-based lookups O(n) to set-based lookups O(1).</p>
+                    <p class="text-xs text-indigo-600 font-mono">Grader: AST-based complexity analysis.</p>
+                </div>
+                <div class="p-4 bg-slate-50 border border-slate-100 rounded-lg">
+                    <p class="font-bold text-slate-800">Hard: Security Patching</p>
+                    <p class="text-sm text-slate-500 italic mb-2">Goal: Fix SQL injection vulnerabilities using parameterized queries.</p>
+                    <p class="text-xs text-indigo-600 font-mono">Grader: Static analysis for safe DB patterns.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-10">
+            <h2 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                <span class="w-8 h-8 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mr-3 text-sm">03</span>
+                Core Workflow
+            </h2>
+            <ul class="pl-11 list-disc text-slate-600 space-y-2">
+                <li><strong>Reset:</strong> Clears the environment and loads the "broken" code for a task.</li>
+                <li><strong>Step:</strong> The agent submits a code change (Action).</li>
+                <li><strong>Observation:</strong> The agent receives the updated code.</li>
+                <li><strong>Reward:</strong> A float (0.0 to 1.0) indicating how much the code improved.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 class="text-xl font-bold text-slate-800 mb-4 flex items-center">
+                <span class="w-8 h-8 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mr-3 text-sm">04</span>
+                How to Interact
+            </h2>
+            <p class="text-slate-600 leading-relaxed pl-11 mb-4">
+                You can use the built-in dashboard at <strong>http://localhost:8080</strong> to manually test the tasks. To train an agent, connect to the following API endpoints:
+            </p>
+            <div class="pl-11 mono text-xs space-y-1 text-indigo-800 bg-indigo-50/50 p-4 rounded-lg">
+                <p>POST /reset?task_id=task_1</p>
+                <p>POST /step (JSON: {action_type: "suggest_fix", content: "..."})</p>
+                <p>GET /state (Retrieves full trajectory and history)</p>
+            </div>
+        </section>
+
+        <div class="mt-16 pt-8 border-t border-slate-100 text-center">
+            <p class="text-[10px] text-slate-400 font-mono uppercase tracking-widest">OpenEnv Project • Build compliant Simulation Environments</p>
+        </div>
+    </div>
+</body>
+</html>

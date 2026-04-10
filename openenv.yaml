@@ -1,0 +1,35 @@
+version: "1.0.0"
+name: "CodeReview-Simulation"
+description: "A simulation environment for AI-driven code review tasks, from syntax fixing to security auditing."
+category: "software-engineering"
+
+action_space:
+  type: "dict"
+  schema:
+    action_type: "string (suggest_fix, analyze, submit)"
+    content: "string (the modified code or analysis string)"
+
+observation_space:
+  type: "dict"
+  schema:
+    code: "string"
+    diagnostics: "list[string]"
+    task_id: "string"
+    step_count: "int"
+
+tasks:
+  - id: "task_1"
+    name: "Variable Rename"
+    difficulty: "easy"
+  - id: "task_2"
+    name: "O(n) to O(1) Optimization"
+    difficulty: "medium"
+  - id: "task_3"
+    name: "SQL Injection Prevention"
+    difficulty: "hard"
+
+reward_range: [0.0, 1.0]
+
+maintainers:
+  - name: "Gaurav Deori"
+    url: "https://github.com/Gauravdeori"
