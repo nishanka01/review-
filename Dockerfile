@@ -24,7 +24,7 @@ COPY openenv.yaml .
 COPY inference.py .
 
 # Copy backend directories
-COPY backend /app/backend
+COPY server /app/server
 # Copy built frontend
 COPY --from=build-stage /app/dist /app/dist
 
@@ -33,4 +33,4 @@ EXPOSE 7860
 
 # Run the application
 # We use python -m uvicorn to ensure it's in the path
-CMD ["python", "-m", "uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["python", "-m", "uvicorn", "server.app:app", "--host", "0.0.0.0", "--port", "7860"]

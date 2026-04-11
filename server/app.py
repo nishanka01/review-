@@ -28,6 +28,9 @@ app.add_middleware(
 # Initialize OpenEnv compliant environment
 env = CodeReviewEnv()
 
+def main():
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+
 @app.post("/reset", response_model=Observation)
 async def reset_env(task_id: str = None):
     try:
@@ -88,3 +91,9 @@ async def legacy_review(req: dict):
         "explanation": reward.reason,
         "is_done": done
     }
+def main():
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=7860)
+
+if __name__ == "__main__":
+    main()

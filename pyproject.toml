@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "CodeReview-Simulation"
+version = "1.0.0"
+description = "A multi-language RL environment for code review and optimization tasks."
+authors = [
+    { name = "Nishanka", email = "nishanka01@users.noreply.github.com" }
+]
+dependencies = [
+    "fastapi",
+    "uvicorn",
+    "pydantic",
+    "openai",
+    "torch",
+    "openenv-core[cli]"
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "black"]
+
+[project.scripts]
+openenv-server = "server.app:app"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["server*", "models*", "tasks*", "env*"]

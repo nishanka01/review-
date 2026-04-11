@@ -32,13 +32,19 @@ class State(BaseModel):
     history: List[Dict[str, Any]]
     is_completed: bool
 
-# --- Lazy Env Loader ---
+# Global lazy-loaded environment to avoid circular imports
 _env = None
 
 def get_env():
     global _env
     if _env is None:
-        # Avoid circular import at top level
+        ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+        if ROOT_DIR not in sys.path:
+            sys.path.append(ROOT_DIR)
+        SERVER_DIR = os.path.join(ROOT_DIR, "server")
+        if SERVER_DIR not in sys.path:
+            sys.path.append(SERVER_DIR)
+        
         from env.code_review_env import CodeReviewEnv
         _env = CodeReviewEnv()
     return _env
