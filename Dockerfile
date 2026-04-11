@@ -15,11 +15,15 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy backend requirements and install
+# Copy root files (Required for OpenEnv Hackathon checks)
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy backend code
+COPY models.py .
+COPY openenv.yaml .
+COPY inference.py .
+
+# Copy backend directories
 COPY backend /app/backend
 # Copy built frontend
 COPY --from=build-stage /app/dist /app/dist

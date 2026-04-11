@@ -2,7 +2,9 @@ import os
 import sys
 
 # Ensure root (where models.py is now located) is in path
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+if ROOT_DIR not in sys.path:
+    sys.path.append(ROOT_DIR)
 
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
