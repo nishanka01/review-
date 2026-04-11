@@ -22,7 +22,7 @@ dependencies = [
 dev = ["pytest", "black"]
 
 [project.scripts]
-openenv-server = "server.app:app"
+server = "server.app:main"
 
 [tool.setuptools.packages.find]
 where = ["."]
