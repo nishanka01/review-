@@ -1,0 +1,22 @@
+name: Deploy to Hugging Face
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0   # 🔥 IMPORTANT FIX
+
+    - name: Push to Hugging Face Space
+      run: |
+        git config --global user.email "nishankaborthakur21@gmail.com"
+        git config --global user.name "nishanka01"
+
+        git remote add hf https://nishanka01:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/nishanka01/CodeReview
+        git push hf main
