@@ -37,9 +37,8 @@ CodeReview-Simulation is a high-performance, OpenEnv-compliant simulation enviro
 
 ## 📦 Setup & Usage
 
-1. **Environment Setup**:
    ```bash
-   pip install -r backend/requirements.txt
+   pip install -r server/requirements.txt
    ```
 
 2. **Run Baseline Inference**:
@@ -50,7 +49,7 @@ CodeReview-Simulation is a high-performance, OpenEnv-compliant simulation enviro
 
 3. **Start the API Server**:
    ```bash
-   python -m uvicorn backend.main:app --port 8000
+   python -m uvicorn server.app:app --port 8000
    ```
 
 ## 🐳 Docker Deployment
