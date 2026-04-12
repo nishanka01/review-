@@ -19,4 +19,4 @@ jobs:
         git config --global user.name "nishanka01"
 
         git remote add hf https://nishanka01:${{ secrets.HF_TOKEN }}@huggingface.co/spaces/nishanka01/CodeReview
-        git push hf main
+        git push hf main --force
