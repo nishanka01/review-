@@ -11,9 +11,14 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
+SERVER_DIR = os.path.dirname(os.path.abspath(__file__))
+if SERVER_DIR not in sys.path:
+    sys.path.append(SERVER_DIR)
+
 from env.code_review_env import CodeReviewEnv
 from models import Action, Observation, Reward, State
 from tasks.registry import TASKS
+
 
 app = FastAPI()
 
